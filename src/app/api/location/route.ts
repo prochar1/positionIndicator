@@ -3,8 +3,9 @@ import { Redis } from "@upstash/redis";
 
 // Vercel KV was deprecated in favor of direct Upstash Redis integration
 // Set UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN in Vercel to use this
-const redisUrl = process.env.UPSTASH_REDIS_REST_URL;
-const redisToken = process.env.UPSTASH_REDIS_REST_TOKEN;
+// If you used Vercel KV integration, it uses KV_REST_API_URL and KV_REST_API_TOKEN
+const redisUrl = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
+const redisToken = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
 
 let redis: Redis | null = null;
 if (redisUrl && redisToken) {
