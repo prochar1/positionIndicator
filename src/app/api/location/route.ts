@@ -22,6 +22,8 @@ let memoryLocations: {
   latitude: number;
   longitude: number;
   timestamp: number;
+  deviceName?: string;
+  deviceId?: string;
 }[] = [];
 
 export async function POST(req: Request) {
